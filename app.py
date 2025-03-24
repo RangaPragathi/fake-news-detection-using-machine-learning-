@@ -2,20 +2,14 @@ import streamlit as st
 import numpy as np
 import re
 import pandas as pd
-import subprocess
-import sys
-try:
-    import nltk
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "nltk"])
-    import nltk
-
+import nltk
 nltk.download('stopwords')  # <-- Add this line to download stopwords
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 
 # Load data
 news_df = pd.read_csv('train.csv')
